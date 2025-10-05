@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  mysql:
+    image: mysql:8.0
+    container_name: three-tier-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: webappdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./application-code/db-init:/docker-entrypoint-initdb.d
+    networks:
+      - three-tier-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Backend Service (Node.js/Express)
+  backend:
+    build:
+      context: ./application-code/app-tier
+      dockerfile: Dockerfile
+    container_name: three-tier-backend
+    restart: unless-stopped
+    environment:
+      DB_HOST: mysql
+      DB_USER: admin
+      DB_PWD: admin123
+      DB_DATABASE: webappdb
+      NODE_ENV: production
+    ports:
+      - "4000:4000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - three-tier-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:4000/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend Service (React/Nginx)
+  frontend:
+    build:
+      context: ./application-code/web-tier
+      dockerfile: Dockerfile
+    container_name: three-tier-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - three-tier-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  three-tier-network:
+    driver: bridge
+    name: three-tier-network
+
+volumes:
+  mysql-data:
+    name: three-tier-mysql-data
