@@ -27,6 +27,8 @@ Terraform v1.5.0
 on windows_amd64
 
 
+
+
 If your Terraform version is outdated and you wish to update it, google the steps and follow the instructions or simply ask for guidance from a member of the faculty.
 
 
@@ -42,11 +44,11 @@ NOTE: The installation typically places the Terraform binary, provider cache, an
 
 
 How to Set up Terraform Portable Style
-This is my preferred option - portable style which gives control over the versions of Terraform I can use. A typical example is downloading the binary directly from HashiCorp. To do this you need to:
+This is my preferred option - portable style which gives control over the versions of Terraform I can use. A typical example is downloading the Terraform binary directly from HashiCorp. To do this you need to:
 Visit the Terraform downloads page at https://www.terraform.io/downloads to download the version you want.
 Extract the downloaded archive to your chosen location (e.g., a USB drive or a folder like C:\tools\terraform or ~/tools/terraform).
 Navigate to the folder and run the terraform executable directly from your command prompt.
-You can use terraform to manage infrastructure by running commands like terraform init, terraform plan, and terraform apply from the command prompt.
+You can use Terraform to manage infrastructure by running commands like terraform init, terraform plan, and terraform apply from the command prompt.
 
 Also check out "tfenv" or "tfswitch" in your spare time - quite interesting version managers for Terraform.
 
