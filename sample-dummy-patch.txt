@@ -1,0 +1,31 @@
+Hello from the Outreachy Internship Applicant!
+
+This is a sample dummy patch file for practicing Gerrit workflow.
+
+Project: Extending Ironic Node Deployment History API
+Date: 2025-10-10
+
+Purpose of this patch:
+- Learning how to use Gerrit for code review
+- Practicing the OpenStack contribution workflow
+- Preparing for the Ironic project internship
+
+About the Internship Project:
+The goal is to extend the Ironic node history API to include:
+1. More details about node state transitions (provision, active, etc.)
+2. Filters to query node information based on state transitions
+3. A summary API for recent information within a time period
+
+This dummy patch demonstrates that I understand how to:
+- Clone a repository
+- Make changes to files
+- Commit changes with proper messages
+- Use git-review to submit to Gerrit
+
+---
+Next steps after this practice:
+1. Read and understand the Ironic documentation
+2. Explore the node history API implementation
+3. Start contributing to the actual project
+
+Thank you for reviewing my practice patch!
