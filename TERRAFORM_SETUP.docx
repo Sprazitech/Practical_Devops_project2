@@ -1,0 +1,56 @@
+Setup Terraform
+
+Terraform is a critical asset for your study. Terraform is an open-source infrastructure as code (IaC) software tool that enables you to safely and predictably create, change, and improve infrastructure. Technically speaking, we are actually setting up the Terraform CLI (command-line interface, state manager, provider plugins, etc.).
+
+IMPORTANT:
+Please ensure you don't already have Terraform before setting this up. See the section on how to check if you already have Terraform installed.
+
+Also note that you have two options:
+You can either install Terraform on your system like any other application or
+You can set up Terraform as a Portable Binary.
+I prefer the second option as I have more control over the Terraform setup. Also, it means you have to know (and do) a few more things about setting the system PATH to ensure the Terraform executable can be found when you run any command line terminal.
+
+
+How to Check if you already have Terraform Installed.
+There are many ways to check if you already have Terraform installed and set up in your system. We will be using the command line version check.
+
+Launch your Cmder or Git Bash.
+Run the command below.
+terraform --version
+
+If you get a response similar to any of the images below, you already have Terraform installed and set up.
+
+Terraform v1.9.5
+on linux_amd64
+
+Terraform v1.5.0
+on windows_amd64
+
+
+
+
+If your Terraform version is outdated and you wish to update it, google the steps and follow the instructions or simply ask for guidance from a member of the faculty.
+
+
+How to Set up Terraform by Installation
+This option is simple but not my preferred option. It installs Terraform and sets it up for your use. To do this:
+Simply Google and follow the steps on how to install Terraform into your system
+The below links serve as a sample guides for your installation:
+https://developer.hashicorp.com/terraform/install
+https://learn.hashicorp.com/tutorials/terraform/install-cli
+https://phoenixnap.com/kb/how-to-install-terraform
+
+NOTE: The installation typically places the Terraform binary, provider cache, and associated tools in a system-wide location, making it accessible from anywhere on your machine.
+
+
+How to Set up Terraform Portable Style
+This is my preferred option - portable style which gives control over the versions of Terraform I can use. A typical example is downloading the Terraform binary directly from HashiCorp. To do this you need to:
+Visit the Terraform downloads page at https://www.terraform.io/downloads to download the version you want.
+Extract the downloaded archive to your chosen location (e.g., a USB drive or a folder like C:\tools\terraform or ~/tools/terraform).
+Navigate to the folder and run the terraform executable directly from your command prompt.
+You can use Terraform to manage infrastructure by running commands like terraform init, terraform plan, and terraform apply from the command prompt.
+
+Also check out "tfenv" or "tfswitch" in your spare time - quite interesting version managers for Terraform.
+
+IMPORTANT NOTE:
+It is highly recommended that you set the Terraform Path at the end so that you can use Terraform from every terminal on your PC (Cmder, cmd, Git Bash, PowerShell, etc.) without needing to switch to the Terraform directory each time you want to do so.
